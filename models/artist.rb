@@ -25,7 +25,6 @@ class Artist
     sql = "UPDATE artists SET name = $1 WHERE id = $2;"
     values = [@name, @id]
     SqlRunner.run(sql, values)
-
   end
 
 
@@ -36,7 +35,6 @@ class Artist
     results = SqlRunner.run(sql, values)
     albums = results.map{|album| Album.new(album)}
     return albums
-
   end
 
   def self.find_by_id(id)
