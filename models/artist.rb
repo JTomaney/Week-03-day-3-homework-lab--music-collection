@@ -13,7 +13,6 @@ class Artist
     @name = options['name']
   end
 
-
   def save()
     sql = "INSERT INTO artists (name) VALUES ($1) RETURNING id;"
     values = [@name]
@@ -26,8 +25,6 @@ class Artist
     values = [@name, @id]
     SqlRunner.run(sql, values)
   end
-
-
 
   def albums()
     sql = "SELECT * FROM albums WHERE artist_id = $1"
@@ -45,7 +42,6 @@ class Artist
     return artist
   end
 
-
   def self.all()
     sql = "SELECT * FROM artists;"
     artists = SqlRunner.run(sql)
@@ -56,12 +52,5 @@ class Artist
     sql = "DELETE FROM artists;"
     SqlRunner.run(sql)
   end
-
-
-
-
-
-
-
 
 end
